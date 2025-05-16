@@ -62,26 +62,26 @@ def main(page: ft.Page):
         page.theme_mode = ft.ThemeMode.DARK if page.theme_mode == ft.ThemeMode.LIGHT else ft.ThemeMode.LIGHT
         page.update()
 
-    def copy_greeting(_):
-        page.set_clipboard(greeting_text.value)
+    # def copy_greeting(_):
+    #     page.set_clipboard(greeting_text.value)
 
     # UI элементы
-    theme_button = ft.IconButton(icon=ft.icons.BRIGHTNESS_7, tooltip="Сменить тему", on_click=toggle_theme)
+    theme_button = ft.IconButton(icon=ft.icons.BRIGHTNESS_6, tooltip="Сменить тему", on_click=toggle_theme)
     name_input = ft.TextField(label="Введите ваше имя:", autofocus=True, on_submit=on_button_click)
-    greet_button = ft.ElevatedButton("Поздороваться", icon=ft.icons.API, on_click=on_button_click)
-    clear_button = ft.IconButton(icon=ft.icons.DELETE, tooltip="Очистить историю", on_click=clear_history)
-    copy_button = ft.IconButton(icon=ft.icons.COPY, tooltip="Скопировать приветствие", on_click=copy_greeting)
-
+    greet_button = ft.ElevatedButton("Поздороваться", icon=ft.icons.FRONT_HAND, on_click=on_button_click)
+    # clear_button = ft.IconButton(icon=ft.icons.DELETE, tooltip="Очистить историю", on_click=clear_history)
+    clear_button = ft.ElevatedButton("Очистить историю", icon=ft.icons.DELETE, on_click=clear_history)
+    # copy_button = ft.IconButton(icon=ft.icons.COPY, tooltip="Скопировать приветствие", on_click=copy_greeting)
     history_column = ft.Column()
     update_history_view()
 
     # Разметка
     page.add(
-        ft.Row([theme_button, clear_button], alignment=ft.MainAxisAlignment.END),
+        ft.Row([theme_button, clear_button], alignment=ft.MainAxisAlignment.CENTER),
         greeting_text,
         name_input,
         greet_button,
-        copy_button,
+        # copy_button,
         history_column
     )
 
